@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "eventesy-6278b": {
+      "hosting": {
+        "app": [
+          "<application_id_from_firebase>"
+        ]
+      }
+    }
+  }
+}
