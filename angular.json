@@ -34,13 +34,15 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               {
-                "input": "src/theme/variables.scss"
-              },
-              {
-                "input": "src/global.scss"
+                "input": "src/styles/global.scss"
               }
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./src/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {
