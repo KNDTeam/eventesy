@@ -4,7 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
-import { SidebarComponent } from '@shared/sidebar/sidebar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { VideoComponent } from './video/video.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   imports: [
@@ -15,10 +17,14 @@ import { SidebarComponent } from '@shared/sidebar/sidebar.component';
     ReactiveFormsModule
   ],
   declarations: [
-    SidebarComponent
+    SidebarComponent,
+    VideoComponent,
+    ChatComponent,
   ],
   exports: [
-    SidebarComponent
+    SidebarComponent,
+    VideoComponent,
+    ChatComponent,
   ]
 })
 export class SharedModule { }
