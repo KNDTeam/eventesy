@@ -9,6 +9,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class VideoComponent implements OnInit {
 
   @Input() videoUrl: string;
+  @Input() startTimer: string = '0';
 
   sanitizedUrl: SafeResourceUrl;
 
@@ -17,7 +18,18 @@ export class VideoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoUrl);
-    console.log(this.videoUrl);
+    this.startTimer = this.timeStringToInt(this.startTimer);
+    this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.videoUrl}?start=${this.startTimer}`);
+  }
+
+  /**
+   * Convert a time string to a number
+   * @param time
+   */
+  private timeStringToInt(time): string {
+    const hoursMinutes = time.split(/[.:]/);
+    const hours = parseInt(hoursMinutes[0], 10);
+    const minutes = hoursMinutes[1] ? parseInt(hoursMinutes[1], 10) : 0;
+    return (hours * 60 + minutes) + '';
   }
 }
