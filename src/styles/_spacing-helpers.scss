@@ -1,0 +1,299 @@
+@import "settings/spacers";
+@import "settings/breakpoints";
+
+$grid-breakpoints: (
+  xs: $breakpoint-xs,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  hd: $breakpoint-hd
+) !default;
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $length in $spacers {
+
+        .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
+        .#{$abbrev}t#{$infix}-#{$size},
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-top: $length !important;
+        }
+        .#{$abbrev}r#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right: $length !important;
+        }
+        .#{$abbrev}b#{$infix}-#{$size},
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-bottom: $length !important;
+        }
+        .#{$abbrev}l#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-left: $length !important;
+        }
+      }
+    }
+
+    // Some special margin utils
+    .m#{$infix}-auto { margin: auto !important; }
+    .mt#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-top: auto !important;
+    }
+    .mr#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
+    }
+    .mb#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-bottom: auto !important;
+    }
+    .ml#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-left: auto !important;
+    }
+  }
+}
+
+/*
+
+.m-0
+.mt-0
+.mr-0
+.mb-0
+.ml-0
+.mx-0
+.my-0
+
+.m-auto
+.mt-auto
+.mr-auto
+.mb-auto
+.ml-auto
+.mx-auto
+.my-auto
+
+.p-0
+.pt-0
+.pr-0
+.pb-0
+.pl-0
+.px-0
+.py-0
+
+.p-auto
+.pt-auto
+.pr-auto
+.pb-auto
+.pl-auto
+.px-auto
+.py-auto
+
+@media (min-width:576px) {
+
+    .m-mobile-0
+    .mt-mobile-0
+    .mr-mobile-0
+    .mb-mobile-0
+    .ml-mobile-0
+    .mx-mobile-0
+    .my-mobile-0
+
+    .p-mobile-0
+    .pt-mobile-0
+    .pr-mobile-0
+    .pb-mobile-0
+    .pl-mobile-0
+    .px-mobile-0
+    .py-mobile-0
+
+    .m-mobile-auto
+    .mt-mobile-auto
+    .mr-mobile-auto
+    .mb-mobile-auto
+    .ml-mobile-auto
+    .mx-mobile-auto
+    .my-mobile-auto
+
+    .p-mobile-auto
+    .pt-mobile-auto
+    .pr-mobile-auto
+    .pb-mobile-auto
+    .pl-mobile-auto
+    .px-mobile-auto
+    .py-mobile-auto
+
+}
+
+@media (min-width:780px) {
+
+    .m-tablet-0
+    .mt-tablet-0
+    .mr-tablet-0
+    .mb-tablet-0
+    .ml-tablet-0
+    .mx-tablet-0
+    .my-tablet-0
+
+    .p-tablet-0
+    .pt-tablet-0
+    .pr-tablet-0
+    .pb-tablet-0
+    .pl-tablet-0
+    .px-tablet-0
+    .py-tablet-0
+
+    .m-tablet-auto
+    .mt-tablet-auto
+    .mr-tablet-auto
+    .mb-tablet-auto
+    .ml-tablet-auto
+    .mx-tablet-auto
+    .my-tablet-auto
+
+    .p-tablet-auto
+    .pt-tablet-auto
+    .pr-tablet-auto
+    .pb-tablet-auto
+    .pl-tablet-auto
+    .px-tablet-auto
+    .py-tablet-auto
+}
+
+@media (min-width:960px) {
+
+    .m-desktop-0
+    .mt-desktop-0
+    .mr-desktop-0
+    .mb-desktop-0
+    .ml-desktop-0
+    .mx-desktop-0
+    .my-desktop-0
+
+    .p-desktop-0
+    .pt-desktop-0
+    .pr-desktop-0
+    .pb-desktop-0
+    .pl-desktop-0
+    .px-desktop-0
+    .py-desktop-0
+
+    .m-desktop-auto
+    .mt-desktop-auto
+    .mr-desktop-auto
+    .mb-desktop-auto
+    .ml-desktop-auto
+    .mx-desktop-auto
+    .my-desktop-auto
+
+    .p-desktop-auto
+    .pt-desktop-auto
+    .pr-desktop-auto
+    .pb-desktop-auto
+    .pl-desktop-auto
+    .px-desktop-auto
+    .py-desktop-auto
+
+}
+
+@media (min-width:1024px) {
+
+    .m-widescreen-0
+    .mt-widescreen-0
+    .mr-widescreen-0
+    .mb-widescreen-0
+    .ml-widescreen-0
+    .mx-widescreen-0
+    .my-widescreen-0
+
+    .p-widescreen-0
+    .pt-widescreen-0
+    .pr-widescreen-0
+    .pb-widescreen-0
+    .pl-widescreen-0
+    .px-widescreen-0
+    .py-widescreen-0
+
+    .m-widescreen-auto
+    .mt-widescreen-auto
+    .mr-widescreen-auto
+    .mb-widescreen-auto
+    .ml-widescreen-auto
+    .mx-widescreen-auto
+    .my-widescreen-auto
+
+    .p-widescreen-auto
+    .pt-widescreen-auto
+    .pr-widescreen-auto
+    .pb-widescreen-auto
+    .pl-widescreen-auto
+    .px-widescreen-auto
+    .py-widescreen-auto
+
+}
+
+@media (min-width:1280px) {
+
+    .m-hd-0
+    .mt-hd-0
+    .mr-hd-0
+    .mb-hd-0
+    .ml-hd-0
+    .mx-hd-0
+    .my-hd-0
+
+    .p-hd-0
+    .pt-hd-0
+    .pr-hd-0
+    .pb-hd-0
+    .pl-hd-0
+    .px-hd-0
+    .py-hd-0
+
+    .m-hd-auto
+    .mt-hd-auto
+    .mr-hd-auto
+    .mb-hd-auto
+    .ml-hd-auto
+    .mx-hd-auto
+    .my-hd-auto
+
+    .p-hd-auto
+    .pt-hd-auto
+    .pr-hd-auto
+    .pb-hd-auto
+    .pl-hd-auto
+    .px-hd-auto
+    .py-hd-auto
+
+}
+
+*/
