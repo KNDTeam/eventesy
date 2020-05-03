@@ -1,3 +1,6 @@
-<p>
-  timestamps works!
-</p>
+<h3 class="timestamps-title">Assuntos Importantes</h3>
+<ul class="timestamps-list">
+  <li *ngFor="let subject of subjects" (click)="selectTimestamp.emit(subject.time)">
+    <app-timestamp [time]="subject.time" [title]="subject.title"></app-timestamp>
+  </li>
+</ul>

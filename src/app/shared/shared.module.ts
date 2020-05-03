@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { MaterialModule } from '@app/material.module';
-
 import { NgxYoutubePlayerModule, YoutubePlayerService } from 'ngx-youtube-player';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -35,6 +34,8 @@ import { TimestampComponent } from './timestamps/timestamp/timestamp.component';
     SidebarComponent,
     VideoComponent,
     ChatComponent,
+    TimestampsComponent,
+    TimestampComponent,
   ],
   providers: [
     YoutubePlayerService
