@@ -18,8 +18,8 @@ export class VideoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.startTimer = this.timeStringToInt(this.startTimer);
-    this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.videoUrl}?start=${this.startTimer}`);
+    // this.startTimer = this.timeStringToInt(this.startTimer);
+    // this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${this.videoUrl}?start=${this.startTimer}`);
   }
 
   /**
