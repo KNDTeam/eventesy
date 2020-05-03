@@ -12,6 +12,8 @@ export class VideoComponent implements OnInit {
   @Input() startTimer: string = '0';
   playerVars: YT.PlayerVars;
   player: YT.Player;
+  videoDuration: string;
+  videoTitle: string;
 
   constructor(
     private service: YoutubePlayerService
@@ -24,6 +26,7 @@ export class VideoComponent implements OnInit {
       modestbranding: 1,
       rel: 0,
       showinfo: 0,
+      iv_load_policy: 3,
       start: this.timeStringToInt(this.startTimer),
     };
   }
@@ -34,6 +37,8 @@ export class VideoComponent implements OnInit {
    */
   savePlayer(player) {
     this.player = player;
+    this.videoDuration = this.intToTimeString(this.player.getDuration());
+    this.videoTitle = this.player.getVideoData().title;
   }
 
   click() {
@@ -49,5 +54,11 @@ export class VideoComponent implements OnInit {
     const hours = parseInt(hoursMinutes[0], 10);
     const minutes = hoursMinutes[1] ? parseInt(hoursMinutes[1], 10) : 0;
     return hours * 60 + minutes;
+  }
+
+  private intToTimeString(time): string {
+    const hours = parseInt((time / 60) + '', 0);
+    const minutes = time - hours * 60;
+    return `${hours}:${minutes === 0 ? '00' : minutes}`;
   }
 }

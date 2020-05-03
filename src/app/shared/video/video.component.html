@@ -4,5 +4,7 @@
     [playerVars]="playerVars"
     (ready)="savePlayer($event)"
   ></youtube-player>
+  <div>{{ videoDuration }}</div>
+  <div>{{ videoTitle }}</div>
   <button (click)="click()">Clique para mudar o tempo do video</button>
 </div>
