@@ -1,3 +1,8 @@
-<youtube-player
-  videoId="WETIV8nTu60"
-></youtube-player>
+<div class="videoplayer">
+  <youtube-player
+    [videoId]="videoId"
+    [playerVars]="playerVars"
+    (ready)="savePlayer($event)"
+  ></youtube-player>
+  <button (click)="click()">Clique para mudar o tempo do video</button>
+</div>

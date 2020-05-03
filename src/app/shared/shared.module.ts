@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
-import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { NgxYoutubePlayerModule, YoutubePlayerService } from 'ngx-youtube-player';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -33,6 +33,9 @@ import { ChatComponent } from './chat/chat.component';
   ],
   bootstrap: [
     VideoComponent
+  ],
+  providers: [
+    YoutubePlayerService
   ]
 })
 export class SharedModule { }
