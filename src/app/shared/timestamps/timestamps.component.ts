@@ -7,11 +7,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TimestampsComponent implements OnInit {
 
-  @Input() list: [];
+  @Input() subjects: [] = [];
   @Output() selectTimestamp: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {}
-  // this.selectTimestamp.emit(this.counter);
+  // ;
 }

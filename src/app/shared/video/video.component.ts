@@ -17,7 +17,16 @@ export class VideoComponent implements OnInit {
   player: YTPlayer;
   videoDuration: string;
   videoTitle: string;
-  listTimestamps: [] = [];
+  listTimestamps = [
+    {
+      time: '3:20',
+      title: 'Fermentação das Uvas'
+    },
+    {
+      time: '6:20',
+      title: 'Processo de Armazenagem do Vinho'
+    },
+  ];
 
   constructor(
     private service: YoutubePlayerService

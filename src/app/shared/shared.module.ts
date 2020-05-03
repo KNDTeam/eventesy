@@ -23,7 +23,6 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     NgxYoutubePlayerModule.forRoot(),
-    CommonModule,
     MatIconModule,
   ],
   declarations: [
@@ -37,9 +36,11 @@ import { MatIconModule } from '@angular/material/icon';
     SidebarComponent,
     VideoComponent,
     ChatComponent,
+    TimestampsComponent,
+    TimestampComponent,
   ],
   bootstrap: [
-    VideoComponent
+    VideoComponent,
   ],
   providers: [
     YoutubePlayerService
