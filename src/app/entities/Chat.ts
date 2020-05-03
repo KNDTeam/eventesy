@@ -9,6 +9,7 @@ export interface Message {
   id: string;
   sender: User | string;
   content: string;
+  timestamp: Date;
   type: 'normal' | 'response' | 'question';
 }
 

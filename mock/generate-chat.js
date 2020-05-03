@@ -38,6 +38,7 @@ for (let i = floor; i <= total; i++) {
     id: i,
     sender: faker.helpers.shuffle(chat.users)[0],
     content: faker.hacker.phrase(),
+    timestamp: Date.parse(new Date(Date.now() + i * 1000).toString()),
     type: t
   };
 
