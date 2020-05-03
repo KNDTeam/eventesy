@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TransmissionPage implements OnInit {
   public folder: string;
 
-  public startTimer = '3:59';
+  public startTimer = '0';
 
   constructor(private activatedRoute: ActivatedRoute) { }
 

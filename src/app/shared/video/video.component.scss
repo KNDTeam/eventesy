@@ -1,3 +1,32 @@
 .videoplayer {
   margin-top: 15vh;
 }
+
+.videoplayer-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.videoplayer-info h2 {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.videoplayer-info > span {
+  margin-top: 18px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #ccc;
+  display: flex;
+  justify-content: space-around;
+}
+
+.videoplayer-info > span .mat-icon {
+  font-size: 14px;
+  margin: 0;
+}
+
+.videoplayer-info > span span {
+  margin-right: 8px;
+}

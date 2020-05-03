@@ -10,6 +10,10 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { VideoComponent } from './video/video.component';
 import { ChatComponent } from './chat/chat.component';
+import { TimestampsComponent } from './timestamps/timestamps.component';
+import { TimestampComponent } from './timestamps/timestamp/timestamp.component';
+
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -20,11 +24,14 @@ import { ChatComponent } from './chat/chat.component';
     ReactiveFormsModule,
     NgxYoutubePlayerModule.forRoot(),
     CommonModule,
+    MatIconModule,
   ],
   declarations: [
     SidebarComponent,
     VideoComponent,
     ChatComponent,
+    TimestampsComponent,
+    TimestampComponent,
   ],
   exports: [
     SidebarComponent,
