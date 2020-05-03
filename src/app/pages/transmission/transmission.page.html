@@ -8,6 +8,18 @@
 <!--</ion-header>-->
 
 <ion-content>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px"
+       style="height:100%;padding: 5px;">
+    <div fxFlex class="black one"> 1</div>
+    <div fxFlex class="black two_h target" [fxFlexAlign]="alignTo"
+         (click)="toggleAlignment()"> target
+    </div>
+    <div fxFlex class="black three"> 3</div>
+    <div fxFlex class="black four_h"> 4</div>
+    <div fxFlex class="black fives"> 5</div>
+  </div>
+
   <ion-grid class="ion-no-padding" style="height: 100%">
     <ion-row style="height: 100%">
 
@@ -25,12 +37,7 @@
           </div>
 
           <div class="chat-messages">
-            <ion-content>
-              <div class="messages-container">
-                <p class="p-1 my-1" *ngFor="let at of
-                [0,1,2,5,1,2,3,4,5,1]; let i = index">{{ i }}</p>
-              </div>
-            </ion-content>
+            <app-chat></app-chat>
           </div>
 
           <div class="chat-poll ion-hide">Enquete</div>
