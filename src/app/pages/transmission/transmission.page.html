@@ -1,12 +1,55 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!--<ion-header [translucent]="true">-->
+<!--  <ion-toolbar>-->
+<!--    <ion-buttons slot="start">-->
+<!--      <ion-menu-button></ion-menu-button>-->
+<!--    </ion-buttons>-->
+<!--    <ion-title>{{ folder }}</ion-title>-->
+<!--  </ion-toolbar>-->
+<!--</ion-header>-->
 
-<ion-content [fullscreen]="true">
-  <app-video videoUrl="https://www.youtube.com/embed/WETIV8nTu60" [startTimer]="startTimer"></app-video>
+<ion-content>
+  <ion-grid class="ion-no-padding" style="height: 100%">
+    <ion-row style="height: 100%">
+
+      <ion-col size="9" style="background-color: #1e2023">
+        <ion-content>
+          <app-video videoUrl="https://www.youtube.com/embed/WETIV8nTu60" [startTimer]="startTimer"></app-video>
+        </ion-content>
+      </ion-col>
+
+      <ion-col size="3" class="p-2" style="background-color: #92949c">
+        <div class="chat">
+
+          <div class="chat-header">
+            <h3>My Title</h3>
+          </div>
+
+          <div class="chat-messages">
+            <ion-content>
+              <div class="messages-container">
+                <p class="p-1 my-1" *ngFor="let at of
+                [0,1,2,5,1,2,3,4,5,1]; let i = index">{{ i }}</p>
+              </div>
+            </ion-content>
+          </div>
+
+          <div class="chat-poll ion-hide">Enquete</div>
+
+          <div class="chat-footer ion-hide">
+            <ion-grid class="ion-no-padding">
+              <ion-row>
+                <ion-col size="9">
+                  <input type="text"/>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-button size="small">Enviar</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
