@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
 import { ShellComponent } from '@app/pages/shell/shell.component';
 
 const routes: Routes = [
@@ -9,12 +10,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'folder/Inbox',
+        redirectTo: 'transmission/Inbox',
         pathMatch: 'full'
       },
       {
-        path: 'folder/:id',
-        loadChildren: () => import('./pages/folder/folder.module').then(m => m.FolderPageModule)
+        path: 'transmission/:id',
+        loadChildren: () => import('@pages/transmission/transmission.module').then(m => m.TransmissionPageModule)
       }
     ]
   },

@@ -3,13 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-folder',
-  templateUrl: './folder.page.html',
-  styleUrls: ['./folder.page.scss'],
+  templateUrl: './transmission.page.html',
+  styleUrls: ['./transmission.page.scss'],
 })
-export class FolderPage implements OnInit {
+export class TransmissionPage implements OnInit {
   public folder: string;
 
-  public startTimer: string = '3:59';
+  public startTimer = '3:59';
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
