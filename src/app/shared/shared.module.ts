@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { IonicModule } from '@ionic/angular';
 
 import { NgxYoutubePlayerModule, YoutubePlayerService } from 'ngx-youtube-player';
@@ -20,6 +21,7 @@ import { ChatComponent } from './chat/chat.component';
     ReactiveFormsModule,
     NgxYoutubePlayerModule.forRoot(),
     CommonModule,
+    FlexLayoutModule,
   ],
   declarations: [
     SidebarComponent,
