@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "mock:generate:chat": "node ./mock/generate-chat.js > ./mock/data/chat.json"
+    "mock:generate:chat": "node ./mock/generate-chat.js > ./src/assets/data/chat.json"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +31,7 @@
     "faker": "^4.1.0",
     "firebase": ">= 5.5.7 <8",
     "hammerjs": "^2.0.8",
+    "ngx-scrollbar": "^7.2.1-beta.0",
     "ngx-youtube-player": "^7.1.5",
     "node-libs-browser": "^2.2.1",
     "rxjs": "~6.5.1",
@@ -63,7 +64,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.8.3"
   },
   "description": "An Ionic project"
 }

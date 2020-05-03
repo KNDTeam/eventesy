@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from '@shared/shared.module';
 
@@ -21,7 +24,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FlexLayoutModule,
+    NgScrollbarModule
   ],
   declarations: [
     TransmissionPage
