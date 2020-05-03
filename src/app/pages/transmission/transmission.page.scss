@@ -2,6 +2,16 @@ ion-menu-button {
   color: var(--ion-color-primary);
 }
 
+::ng-deep {
+  ng-scrollbar.default-scroll {
+    --scrollbar-size: 8px;
+    --scrollbar-thumb-color: darkgray;
+    --scrollbar-hover-size: 12px;
+    --scrollbar-track-color: #262626;
+    --scrollbar-border-radius: 10px;
+  }
+}
+
 #container {
   text-align: center;
   position: absolute;
@@ -34,9 +44,9 @@ ion-menu-button {
   height: 100%;
 
   //.chat-header { background-color: #3a7be0; }
-  .chat-messages { background-color: #a5c9e0; }
-  .chat-poll { background-color: #1e3de0; }
-  .chat-footer { background-color: #3a7be0; }
+  .chat-messages { background-color: rgba(128, 128, 128, .2); }
+  //.chat-poll { background-color: #1e3de0; }
+  //.chat-footer { background-color: #3a7be0; }
 
   .chat-poll,
   .chat-footer {
@@ -45,17 +55,5 @@ ion-menu-button {
 
   .chat-messages {
     flex: 1 auto;
-  }
-}
-
-.messages-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  p {
-    background-color: #bdbdbd;
-    color: black
   }
 }
