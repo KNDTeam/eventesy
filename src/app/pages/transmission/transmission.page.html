@@ -89,7 +89,7 @@
       <div
         fxLayout="column"
         fxLayoutAlign="center center"
-        fxLayoutGap="5px"
+        fxFlexFill
         class="chat">
 
 <!--        <div fxFlex="10" fxFlexAlign="stretch" class="chat-header">-->
@@ -100,56 +100,63 @@
           <app-chat></app-chat>
         </div>
 
+        <mat-divider></mat-divider>
+
 <!--        <div fxFlex fxFlexAlign="stretch" class="chat-poll ion-hide">Enquete</div>-->
 
-        <div fxFlex fxFlexAlign="stretch" class="chat-footer py-1 px-3">
+        <div fxFlex="30" fxFlexAlign="stretch" class="chat-footer py-1 px-3">
 
-          <div fxLayout="column" class="w-100 h-100">
+          <form #messageForm (ngSubmit)="sendMessage($event)">
 
-            <div fxFlex>
+            <div fxLayout="column" fxLayoutAlign="space-evenly" class="w-100 h-100">
 
-              <div fxLayout="row" fxLayoutAlign="center center">
-                <div fxFlex>
-                  <mat-form-field>
-                    <mat-select [(ngModel)]="messageTarget">
-                      <mat-option value="all">Enviar para todos</mat-option>
-                      <mat-option value="admin">Enviar para equipe</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
+              <div fxFlex>
 
-                <div fxFlex>
-                  <mat-checkbox [(ngModel)]="messageQuestion">
-                    Enviar como pergunta
-                  </mat-checkbox>
-                </div>
-              </div>
+                <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+                  <div fxFlex>
+                    <mat-form-field class="message-target">
+                      <mat-select [(ngModel)]="messageTarget" name="target">
+                        <mat-option value="all">Enviar para todos</mat-option>
+                        <mat-option value="admin">Enviar para equipe</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
 
-            </div>
-
-            <div fxFlex="grow">
-
-              <div fxLayout="column" class="h-100">
-
-                <div fxFlex class="message-replyTo" *ngIf="selectedMessage">
-                  <div class="message-quote px-2 pt-2 pb-1 mb-1">
-                    <span class="message-tag highlight-text highlight-bg">{{ selectedMessage.sender.fullName }}</span>
-                    {{selectedMessage.content}}
-                    <span class="message-unquote h-100" (click)="removeSelectedMessage()">╳</span>
+                  <div fxFlex>
+                    <mat-checkbox [(ngModel)]="messageQuestion" name="question">
+                      Enviar como pergunta
+                    </mat-checkbox>
                   </div>
                 </div>
 
-                <mat-form-field class="message-input" fxFlex="grow" appearance="fill" style="height:100%;">
-                  <mat-label>Escreva uma mensagem...</mat-label>
-                  <textarea matInput style="height:100%; resize: none;"></textarea>
-                  <button mat-icon-button matSuffix>
-                    <mat-icon>send</mat-icon>
-                  </button>
-                </mat-form-field>
+              </div>
+
+              <div fxFlex>
+
+                <div fxLayout="column">
+
+                  <div fxFlex class="message-replyTo" *ngIf="selectedMessage">
+                    <div class="message-quote px-2 pt-2 pb-1 mb-1">
+                      <span class="message-tag highlight-text highlight-bg">{{ selectedMessage.sender.fullName }}</span>
+                      {{selectedMessage.content}}
+                      <span class="message-unquote h-100" (click)="removeSelectedMessage()">╳</span>
+                    </div>
+                  </div>
+
+                  <mat-form-field class="message-input" appearance="outline">
+                    <mat-label>Escreva uma mensagem...</mat-label>
+                    <input matInput [(ngModel)]="messageContent" name="content"/>
+                    <button type="submit" mat-icon-button matSuffix>
+                      <mat-icon>send</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+
               </div>
 
             </div>
-          </div>
+
+          </form>
 
         </div>
 

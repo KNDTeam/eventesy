@@ -1,5 +1,5 @@
 <ng-scrollbar #scrollable (updated)="onScrollbarUpdate()">
-  <mat-list class="chat-list" *ngIf="(messages$ | async)">
+  <mat-list class="chat-list" *ngIf="messages">
       <mat-list-item class="message my-1" *ngFor="let message of messages">
 
 <!--        <div fxLayout="row" style="width: 100%">-->

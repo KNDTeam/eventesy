@@ -68,7 +68,7 @@ export class MessagesService {
   }
 
   public listenNewMessages() {
-    this.newMessage$.asObservable();
+    return this.newMessage$.asObservable();
   }
 
 }
