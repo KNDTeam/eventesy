@@ -1,0 +1,18 @@
+mat-list-item {
+  height: auto !important;
+  min-height: 50px !important;
+
+  .mat-list-item-content {
+    padding: 0 !important;
+  }
+}
+
+mat-form-field.message-input {
+
+  .mat-form-field-wrapper,
+  .mat-form-field-flex,
+  .mat-form-field-infix,
+  {
+    height: 100%;
+  }
+}

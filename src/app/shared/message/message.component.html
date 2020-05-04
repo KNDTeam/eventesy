@@ -1,0 +1,46 @@
+<div fxLayout="row" class="message w-100 pt-2 pb-3" [ngClass]="{'highlight-bg': message.sender.role ===
+'admin'}">
+  <div fxFlex="15">
+    <div fxLayout="column">
+      <small fxFlex fxFlexAlign="flex-start"
+             class="w-100 text-center py-1">{{ message.timestamp | date:'hh:mm:ss':'pt' }}</small>
+
+      <div class="message-vote" *ngIf="message.type === 'question'" fxFlex fxFlexFill fxFlexAlign="center center">
+        <div fxLayout="column" fxFlexAlign="center center">
+          <mat-icon class="message-upvote" [ngClass]="{'is-voted': vote > 0, 'is-disabled': vote < 0}"
+                    fxFlexAlign="center"
+                    (click)="upvote()">
+            expand_less</mat-icon>
+          <span class="message-score" fxFlexAlign="center"
+                [ngClass]="{'is-upvoted': vote > 0, 'is-downvoted': vote < 0}">{{ getScore() }}</span>
+          <mat-icon class="message-downvote" [ngClass]="{'is-voted': vote < 0, 'is-disabled': vote > 0}"
+                    fxFlexAlign="center"
+                    (click)="downvote()">expand_more</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <span class="message-name d-inline-block pb-2"
+          [ngClass]="{'highlight-text': message.sender.role === 'admin'}">
+      {{ message.sender.fullName }}
+      <mat-icon class="message-badge" *ngIf="message.sender.role === 'admin'">
+        check_circle
+      </mat-icon>
+    </span>
+
+    <div class="message-chip is-highlighted d-inline-block ml-2" *ngIf="message.type === 'question'">PERGUNTA</div>
+    <div class="message-chip message-quote-trigger is-highlighted d-none ml-2" (click)="setMessageAsSelected(message)">↩ RESPONDER</div>
+
+    <ng-container *ngIf="message.type === 'response'">
+      <div class="message-quote px-2 pt-2 pb-1 mb-1">
+        <span
+          class="message-tag highlight-text highlight-bg">{{ message.message_quoted.sender.fullName }}</span> {{
+        message.message_quoted.content}}
+      </div>
+    </ng-container>
+
+    <p class="message-content m-0 pr-3">{{ message.content }}</p>
+  </div>
+</div>

@@ -1,5 +1,27 @@
-<mat-list dense>
-  <mat-list-item>Pepper</mat-list-item>
-  <mat-list-item>Salt</mat-list-item>
-  <mat-list-item>Paprika</mat-list-item>
-</mat-list>
+<ng-scrollbar #scrollable (updated)="onScrollbarUpdate()">
+  <mat-list class="chat-list" *ngIf="(messages$ | async)">
+      <mat-list-item class="message my-1" *ngFor="let message of messages">
+
+<!--        <div fxLayout="row" style="width: 100%">-->
+<!--          <div fxFlex="15">-->
+<!--            <small>{{ message.timestamp | date:'hh:mm:ss':'pt' }}</small>-->
+<!--          </div>-->
+
+<!--          <div fxFlex>-->
+<!--            <span>{{ message.sender.fullName }}</span><br>-->
+<!--            <span>{{ message.content }}</span>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <ng-container [ngSwitch]="message.type">
+<!--          <app-message-question [message]="message" *ngSwitchCase="'question'"></app-message-question>-->
+<!--          <app-message-response [message]="message" *ngSwitchCase="'response'"></app-message-response>-->
+          <app-message class="w-100" [message]="message" *ngSwitchDefault></app-message>
+        </ng-container>
+
+      </mat-list-item>
+  </mat-list>
+</ng-scrollbar>
+<br>
+<br>
+<br>
