@@ -82,6 +82,12 @@ export class TransmissionPage implements OnInit, OnDestroy {
     }
 
     this.messageService.setNewMessage(message);
+    this.resetForm();
+  }
 
+  private resetForm() {
+    this.messageQuestion = false;
+    this.messageContent = '';
+    this.removeSelectedMessage();
   }
 }

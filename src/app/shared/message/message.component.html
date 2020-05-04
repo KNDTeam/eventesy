@@ -30,7 +30,7 @@
       </mat-icon>
     </span>
 
-    <div class="message-chip is-highlighted d-inline-block ml-2" *ngIf="message.type === 'question'">PERGUNTA</div>
+    <div class="message-chip is-highlighted d-inline-block ml-2" *ngIf="message.type === 'question'">DÚVIDA</div>
     <div class="message-chip message-quote-trigger is-highlighted d-none ml-2" (click)="setMessageAsSelected(message)">↩ RESPONDER</div>
 
     <ng-container *ngIf="message.type === 'response'">

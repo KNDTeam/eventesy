@@ -113,6 +113,7 @@
               <div fxFlex>
 
                 <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+
                   <div fxFlex>
                     <mat-form-field class="message-target">
                       <mat-select [(ngModel)]="messageTarget" name="target">
@@ -124,9 +125,10 @@
 
                   <div fxFlex>
                     <mat-checkbox [(ngModel)]="messageQuestion" name="question">
-                      Enviar como pergunta
+                      Enviar como dúvida
                     </mat-checkbox>
                   </div>
+
                 </div>
 
               </div>
@@ -145,7 +147,7 @@
 
                   <mat-form-field class="message-input" appearance="outline">
                     <mat-label>Escreva uma mensagem...</mat-label>
-                    <input matInput [(ngModel)]="messageContent" name="content"/>
+                    <input matInput [(ngModel)]="messageContent" name="content" autocomplete="off" />
                     <button type="submit" mat-icon-button matSuffix>
                       <mat-icon>send</mat-icon>
                     </button>
