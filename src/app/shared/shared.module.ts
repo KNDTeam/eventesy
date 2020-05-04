@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IonicModule } from '@ionic/angular';
-import { NgxCaptureModule } from 'ngx-capture';
 
 import { MaterialModule } from '@app/material.module';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
@@ -33,7 +32,6 @@ import { MessageResponseComponent } from '@shared/message-response/message-respo
     NgScrollbarModule,
     NgxYoutubePlayerModule.forRoot(),
     MaterialModule,
-    NgxCaptureModule,
   ],
   declarations: [
     SidebarComponent,
