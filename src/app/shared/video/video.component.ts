@@ -70,9 +70,14 @@ export class VideoComponent implements OnInit {
 
 
   takePicture() {
-    this.captureService.getImage(this.screen.nativeElement, true).then(img => {
-      console.log(img);
+    // this.captureService.getImage(this.screen.nativeElement, true).then(img => {
+    //   console.log(img);
+    // });
+
+    const blob = new Blob([document.querySelector('.videoplayer').outerHTML], {
+      type: 'text/html'
     });
+    window.open(window.URL.createObjectURL(blob));
   }
 
 
