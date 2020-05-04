@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { NgxCaptureModule } from 'ngx-capture';
 
 import { MaterialModule } from '@app/material.module';
-import { NgxYoutubePlayerModule, YoutubePlayerService } from 'ngx-youtube-player';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { VideoComponent } from './video/video.component';
@@ -21,7 +22,8 @@ import { TimestampComponent } from './timestamps/timestamp/timestamp.component';
     FormsModule,
     ReactiveFormsModule,
     NgxYoutubePlayerModule.forRoot(),
-    MaterialModule
+    MaterialModule,
+    NgxCaptureModule,
   ],
   declarations: [
     SidebarComponent,
@@ -37,8 +39,5 @@ import { TimestampComponent } from './timestamps/timestamp/timestamp.component';
     TimestampsComponent,
     TimestampComponent,
   ],
-  providers: [
-    YoutubePlayerService
-  ]
 })
 export class SharedModule { }

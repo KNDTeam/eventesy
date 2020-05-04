@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { YoutubePlayerService, YouTubePlayerRef } from 'ngx-youtube-player';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { NgxCaptureService } from 'ngx-capture';
+
 interface YTPlayer extends YT.Player {
   getVideoData();
 }
@@ -8,15 +9,20 @@ interface YTPlayer extends YT.Player {
   selector: 'app-video',
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class VideoComponent implements OnInit {
 
   @Input() videoId: string;
   @Input() startTimer: string = '0';
+
+  @ViewChild('screen', { static: true }) screen: any;
+
   playerVars: YT.PlayerVars;
   player: YTPlayer;
   videoDuration: string;
   videoTitle: string;
+
   listTimestamps = [
     {
       time: '3:20',
@@ -29,7 +35,7 @@ export class VideoComponent implements OnInit {
   ];
 
   constructor(
-    private service: YoutubePlayerService
+    private captureService: NgxCaptureService
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +67,14 @@ export class VideoComponent implements OnInit {
   onChangeTime(time): void {
     this.player.seekTo(this.timeStringToInt(time), true);
   }
+
+
+  takePicture() {
+    this.captureService.getImage(this.screen.nativeElement, true).then(img => {
+      console.log(img);
+    });
+  }
+
 
   /**
    * Convert a time string to a number

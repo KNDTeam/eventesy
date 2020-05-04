@@ -27,6 +27,22 @@
   margin: 0;
 }
 
-.videoplayer-info > span span {
+.videoplayer-info > span > span {
   margin-right: 8px;
+}
+
+.head-button {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-weight: 10px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.head-button span {
+  vertical-align: top;
+}
+
+.head-button:hover {
+  color: #80cbc4;
 }

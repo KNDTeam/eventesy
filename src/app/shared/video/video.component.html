@@ -1,4 +1,4 @@
-<div class="videoplayer">
+<div #screen class="videoplayer">
   <youtube-player
     [videoId]="videoId"
     [playerVars]="playerVars"
@@ -8,6 +8,10 @@
   <div class="videoplayer-info">
     <h2>{{ videoTitle }}</h2>
     <span>
+      <a class="head-button" (click)="takePicture()">
+        <mat-icon>add_a_photo</mat-icon>
+        <span>Fotografar</span>
+      </a>
       <mat-icon>visibility</mat-icon>
       <span>6.501</span>
       <mat-icon>schedule</mat-icon>
