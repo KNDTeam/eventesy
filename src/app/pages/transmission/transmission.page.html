@@ -89,20 +89,69 @@
       <div
         fxLayout="column"
         fxLayoutAlign="center center"
-        class="chat"
-        style="height:100%;">
+        fxLayoutGap="5px"
+        class="chat">
 
-        <div fxFlex="10" fxFlexAlign="stretch" class="chat-header">
-          <h3>My Title</h3>
-        </div>
+<!--        <div fxFlex="10" fxFlexAlign="stretch" class="chat-header">-->
+<!--          <h3>My Title</h3>-->
+<!--        </div>-->
 
-        <div fxFlex fxFlexAlign="stretch" class="chat-messages">
+        <div fxFlex="70" fxFlexAlign="stretch" class="chat-messages">
           <app-chat></app-chat>
         </div>
 
-        <div fxFlex fxFlexAlign="stretch" class="chat-poll ion-hide">Enquete</div>
+<!--        <div fxFlex fxFlexAlign="stretch" class="chat-poll ion-hide">Enquete</div>-->
 
-        <div fxFlex fxFlexAlign="stretch" class="chat-footer ion-hide">Footer</div>
+        <div fxFlex fxFlexAlign="stretch" class="chat-footer py-1 px-3">
+
+          <div fxLayout="column" class="w-100 h-100">
+
+            <div fxFlex>
+
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxFlex>
+                  <mat-form-field>
+                    <mat-select [(ngModel)]="messageTarget">
+                      <mat-option value="all">Enviar para todos</mat-option>
+                      <mat-option value="admin">Enviar para equipe</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex>
+                  <mat-checkbox [(ngModel)]="messageQuestion">
+                    Enviar como pergunta
+                  </mat-checkbox>
+                </div>
+              </div>
+
+            </div>
+
+            <div fxFlex="grow">
+
+              <div fxLayout="column" class="h-100">
+
+                <div fxFlex class="message-replyTo" *ngIf="selectedMessage">
+                  <div class="message-quote px-2 pt-2 pb-1 mb-1">
+                    <span class="message-tag highlight-text highlight-bg">{{ selectedMessage.sender.fullName }}</span>
+                    {{selectedMessage.content}}
+                    <span class="message-unquote h-100" (click)="removeSelectedMessage()">╳</span>
+                  </div>
+                </div>
+
+                <mat-form-field class="message-input" fxFlex="grow" appearance="fill" style="height:100%;">
+                  <mat-label>Escreva uma mensagem...</mat-label>
+                  <textarea matInput style="height:100%; resize: none;"></textarea>
+                  <button mat-icon-button matSuffix>
+                    <mat-icon>send</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
 
       </div>
 
