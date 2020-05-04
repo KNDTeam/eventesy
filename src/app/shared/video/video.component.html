@@ -1,8 +1,9 @@
-<div #screen class="videoplayer">
+<div class="videoplayer">
   <youtube-player
     [videoId]="videoId"
     [playerVars]="playerVars"
     (ready)="savePlayer($event)"
+    #screen
   ></youtube-player>
 
   <div class="videoplayer-info">

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { NgxCaptureService } from 'ngx-capture';
+import domtoimage from 'dom-to-image';
 
 interface YTPlayer extends YT.Player {
   getVideoData();
@@ -34,9 +34,7 @@ export class VideoComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private captureService: NgxCaptureService
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.playerVars = {
@@ -70,14 +68,29 @@ export class VideoComponent implements OnInit {
 
 
   takePicture() {
-    // this.captureService.getImage(this.screen.nativeElement, true).then(img => {
-    //   console.log(img);
-    // });
 
-    const blob = new Blob([document.querySelector('.videoplayer').outerHTML], {
-      type: 'text/html'
-    });
-    window.open(window.URL.createObjectURL(blob));
+    // const blob = new Blob([document.querySelector('.videoplayer').outerHTML], {
+    //   type: 'text/html'
+    // });
+    // window.open(window.URL.createObjectURL(blob));
+
+    // const node = document.querySelector('.videoplayer iframe').contentWindow.document.body.querySelector('video');
+
+    // const iframe = document.querySelector('.videoplayer iframe') as HTMLIFrameElement;
+    // const node = iframe.contentWindow.document.body.querySelector('video');
+
+    // var canvas = document.createElement("canvas");
+	  // canvas.getContext('2d').drawImage(node, 0, 0, canvas.width, canvas.height);
+
+    // domtoimage.toPng(node).then(function (dataUrl) {
+    //     const img = new Image();
+    //     img.src = dataUrl;
+    //     document.querySelector('.videoplayer').appendChild(img);
+    //     console.log(img);
+    // })
+    // .catch(function (error) {
+    //   console.error('oops, something went wrong!', error);
+    // });
   }
 
 
