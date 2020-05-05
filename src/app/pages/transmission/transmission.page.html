@@ -115,7 +115,7 @@
                 <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
 
                   <div fxFlex>
-                    <mat-form-field class="message-target">
+                    <mat-form-field class="message-target" color="accent">
                       <mat-select [(ngModel)]="messageTarget" name="target">
                         <mat-option value="all">Enviar para todos</mat-option>
                         <mat-option value="admin">Enviar para equipe</mat-option>
@@ -145,7 +145,7 @@
                     </div>
                   </div>
 
-                  <mat-form-field class="message-input" appearance="outline">
+                  <mat-form-field class="message-input" appearance="outline" color="accent">
                     <mat-label>Escreva uma mensagem...</mat-label>
                     <input matInput [(ngModel)]="messageContent" name="content" autocomplete="off" />
                     <button type="submit" mat-icon-button matSuffix>
